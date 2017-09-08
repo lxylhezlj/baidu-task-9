@@ -3,12 +3,38 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
+<link rel="stylesheet" href="style/style.css" type="text/css">
 </head>
 
 <body>
 <div class="header">
-	<img class="header-logo">
-	<input class="search-box" type="text" >
-</div>
+    <div class="ver-box">
+	    <img class="header-logo" src="images/logo.png" alt="logo">
+	    <div class="sreach">
+	        <a><img src="images/search.png"></a>
+	        <input type="text" >
+	    </div>
+	    <a class="login" href="#"><span>登录</span></a>
+	</div><!--ver-box结束-->
+</div><!--header结束-->
+<div class="left-nav">
+	<div class="self-message">
+		<div class="head-pic"><img src="images/head-pic.png" alt="head-pic"></div>
+		<label class="username">lxylhezlj</label>
+		<div class="collect">
+		    <div class="line"><div>110</div><div>收藏</div></div>
+		    <div><div>313</div><div>粉丝</div></div>
+		</div>
+	</div><!--self-message结束-->
+    <ul class="first-nav">
+    	<li><img src="images/tip1.png"><span>个人报表</span><ul class="second-nav"><li></li><li></li></ul></li>
+    	<li><img src="images/tip22.png"><span>个人收藏</span></li>
+    	<li><img src="images/tip3.png"><span>我的分享</span></li>
+    	<li><img src="images/tip22.png"><span>图库</span></li>
+    	<li><img src="images/tip22.png"><span>成长记录</span></li>
+    	<li><img src="images/tip22.png"><span>账户信息</span></li>
+    </ul>
+</div><!--left-nav结束-->
+<div class="right-content"></div><!--right-content结束-->
 </body>
 </html>
