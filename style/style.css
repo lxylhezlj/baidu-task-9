@@ -1,3 +1,124 @@
 @charset "utf-8";
 /* CSS Document */
+*{
+	padding: 0;
+	margin: 0;
+}
+ul{
+	list-style: none;
+}
+a{
+	color:#fff;
+	text-decoration: none;
+}
+/*最顶部的样式*/
+.header{
 
+	width:100%;
+	height:57px;
+	background-color:#228abf;
+}
+.header .ver-box{/*为了图片垂直居中*/
+	height:57px;
+	display: table-cell;
+	vertical-align:middle;
+	width:100%;
+}
+.header .header-logo{
+	vertical-align:middle;
+	margin-left: 50px;
+	line-height: 57px;
+}
+.header .sreach{
+	display: inline-block;
+	margin-left: 727px;
+	width: 310px;
+	height: 28px;
+	border: 1px solid transparent;
+    border-radius: 15px;
+	margin-right: 20px;
+	background: #fff;
+
+}
+.header a{
+	vertical-align: middle;
+	margin-left: 18px;
+}
+.header input{
+	height: 28px;
+	width: 260px;
+	border: none;
+}
+.header .login{
+	font-size: 12px;
+	width: 44px;
+	height: 15px;
+	display: inline-block;
+	background: url(../images/login.png) left center no-repeat;
+}
+.login span{
+	margin-left: 17px;
+}
+/*左部的样式*/
+.left-nav{
+	width: 260px;
+	background: #2a2e3d;
+	display: inline-block;
+}
+/*左部上面的用户信息样式*/
+.left-nav .self-message{
+	height: 150px;
+}
+.self-message .head-pic{
+	display: inline-block;
+	margin-left: 47px;
+	margin-top: 17px;
+	width: 47px;
+	height: 47px;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	padding: 5px;
+	background-clip: content-box;
+	
+}
+.self-message .username{
+	font-size: 16px;
+	font-family: SimHei ;
+	color:#fff;
+	vertical-align: middle;
+	display: inline-block;
+	height: 57px;
+	margin-left: 18px;
+	
+}
+.self-message .collect{
+	margin-left: 60px;
+	
+}
+.self-message .collect .line{
+
+	border-right: 2px solid #6e8095;
+	padding-right: 34px;
+	margin-right: 34px;
+}
+.collect >div{
+	display: inline-block;
+}
+
+.collect >div div{
+	color: #6e8095;
+	font-size: 12px;
+}
+.first-nav{
+	margin-left: 47px;
+}
+.first-nav li{
+	font-size: 12px;
+	color:#ccc;
+}
+.first-nav>li{
+	margin-bottom: 45px;
+}
+.first-nav>li>img{
+	margin-right: 14px;
+}
