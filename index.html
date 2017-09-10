@@ -4,18 +4,63 @@
 <meta charset="utf-8">
 <title>无标题文档</title>
 <link rel="stylesheet" href="style/style.css" type="text/css">
+<link rel="stylesheet" href="style/font-awesome.css" type="text/css">
+ <script src="js/jquery-1.11.1.min.js"></script>
+<script>
+    $(function(){
+		var $list=$(".first-nav li");//导航里的所有li
+		var $listul=$(".first-nav ul");//导航里fist-nav的所有后代ul
+		$listul.hide();
+		/*导航*/
+		$list.click(function(){
+			if($(this).children().is(".click")){
+				$(this).find("i,a").removeClass("click");
+				$(this).find("ul").hide();
+				$(this).filter(".active").removeClass("active");
+				$(this).find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-right");
+				
+				}
+			else{
+				$(this).addClass("active")
+					   .children("ul").show().end()
+				       .children("i,a").addClass("click").end()
+				       .siblings().find("i,a").removeClass("click").end()
+				       .siblings().find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-right");
+				$(this).siblings().find("ul").hide();
+				$(this).siblings().filter(".active").removeClass("active");
+				if($(this).children("i").is(".fa-chevron-right"))
+					{
+						$(this).children(".fa-chevron-right").removeClass("fa-chevron-right").addClass("fa-chevron-down");
+					}
+				
+			}
+			return false;//阻止事件冒泡！！！
+		});
+		/*tab选项卡*/
+		var $li=$(".tab li");
+		var $div=$(".content div");
+		$li.click(function(){
+			var $index=$(this).index();
+			$(this).addClass("show");
+			$(this).siblings().removeClass("show");
+			$div.eq($index).siblings().filter(".on").removeClass("on").addClass("hide");
+			$div.eq($index).filter(".hide").removeClass("hide").addClass("on");
+			
+			
+			return false;//阻止事件冒泡！！！
+		});
+	});
+</script>
 </head>
 
 <body>
 <div class="header">
-    <div class="ver-box">
 	    <img class="header-logo" src="images/logo.png" alt="logo">
 	    <div class="sreach">
 	        <a><img src="images/search.png"></a>
 	        <input type="text" >
 	    </div>
 	    <a class="login" href="#"><span>登录</span></a>
-	</div><!--ver-box结束-->
 </div><!--header结束-->
 <div class="left-nav">
 	<div class="self-message">
@@ -27,14 +72,153 @@
 		</div>
 	</div><!--self-message结束-->
     <ul class="first-nav">
-    	<li><img src="images/tip1.png"><span>个人报表</span><ul class="second-nav"><li></li><li></li></ul></li>
-    	<li><img src="images/tip22.png"><span>个人收藏</span></li>
-    	<li><img src="images/tip3.png"><span>我的分享</span></li>
-    	<li><img src="images/tip22.png"><span>图库</span></li>
-    	<li><img src="images/tip22.png"><span>成长记录</span></li>
-    	<li><img src="images/tip22.png"><span>账户信息</span></li>
+		<li class="level1">
+  	         <i class="fa fa-folder-open"></i><a href="#">个人报表</a>
+   	         <ul class="second-nav">
+    	          <li class="level2">
+    	              <i class="fa fa-chevron-right"></i><i class="fa fa-folder"></i><a href="#">文件一</a>
+    	              <ul class="third-nav">
+    	                   <li class="level3"><i class="fa fa-sticky-note"></i><a href="#">文档一</a></li>
+    	                   <li class="level3"><i class="fa fa-sticky-note"></i><a href="#">文档二</a></li>
+    	              </ul><!--third-nav结束-->
+    	          </li><!--level2结束-->
+		          <li class="level2">
+  	                  <i class="fa fa-chevron-right"></i><i class="fa fa-folder"></i><a href="#">文件二</a>
+   	                  <ul class="third-nav">
+    	                  <li class="level3"><i class="fa fa-sticky-note"></i><a href="#">文档一</a></li>
+    	                  <li class="level3"><i class="fa fa-sticky-note"></i><a href="#">文档二</a></li>
+    	              </ul><!--third-nav结束-->
+    	          </li><!--level2结束-->
+    	          <li class="level2">
+    	              <i class="fa fa-chevron-right"></i><i class="fa fa-folder"></i><a href="#">文件三</a>
+    	          </li><!--level2结束-->
+    	     </ul>
+    	</li>
+    	<li class="level1">
+    	    <i class="fa fa-star"></i><a href="#">个人收藏</a>
+    	    <ul class="second-nav">
+    	        <li class="level2">
+    	            <i class="fa fa-chevron-right"></i><i class="fa fa-folder"></i><a href="#">文件一</a>
+    	        </li>
+				<li class="level2">
+   	        	    <i class="fa fa-chevron-right"></i><i class="fa fa-folder"></i><a href="#">文件二</a>
+    	        	<ul class="third-nav">
+    	        		<li class="level3"><i class="fa fa-sticky-note"></i><a href="#">文档一</a></li>
+    	        		<li class="level3"><i class="fa fa-sticky-note"></i><a href="#">文档二</a></li>
+    	        	</ul>
+    	        </li>
+    	        <li class="level2">
+    	            <i class="fa fa-chevron-right"></i><i class="fa fa-folder"></i><a href="#">文件三</a>
+    	        </li>
+    	    </ul>
+    	</li>
+    	<li class="level1"><i class="fa fa-star"></i><a href="#">我的分享</a></li>
+    	<li class="level1"><i class="fa fa-star"></i><a href="#">图库</a></li>
+    	<li class="level1"><i class="fa fa-star"></i><a href="#">成长记录</a></li>
+    	<li class="level1"><i class="fa fa-edit"></i><a href="#">账户信息</a></li>
     </ul>
 </div><!--left-nav结束-->
-<div class="right-content"></div><!--right-content结束-->
+<div class="right-content clear-fix">
+	<div class="content-title">
+		<a>C站 / 个人报表 / 文件一 /</a><a> 文档一</a>
+	</div><!--content-title结束-->
+	<div class="center-content">
+		<div class="search">
+		    <div class="first-search">
+			    <span>查询项</span><select class="short first"><option>第一项</option><option>第二项</option></select>
+		    </div>
+			<div class="people">
+			    <span>买方</span><select class="long"><option>小A</option><option>小B</option></select>
+			    <span>卖方</span><select class="long"><option>小A</option><option>小B</option></select>
+			</div>
+			<div class="date">
+				 <span>日期</span><select class="long"><option>小A</option><option>小B</option></select>
+				 <span>总耗时</span><select class="short"><option>小A</option><option>小B</option></select>
+				 <span>人数</span><select class="short"><option>小A</option><option>小B</option></select>
+				 <span>成交数</span><select class="long"><option>小A</option><option>小B</option></select>
+			</div>
+			<div class="input"><input class="button" type="submit" value="搜索"></div>
+      </div>
+      <div class="history-content">
+		 <span class="left next"></span>
+		 <ul>
+			<li><div>10:00 am</div><div>1200</div></li>
+			<li><div>11:00 am</div><div>1300</div></li>
+			<li><div>12:00 am</div><div>1400</div></li>
+			<li><div>13:00 am</div><div>1500</div></li>
+			<li><div>14:00 am</div><div>1600</div></li>
+			<li><div>15:00 am</div><div>1700</div></li>
+		</ul>
+		<span class="right next"></span>
+		<div class="button">历史查询</div>
+	 </div>
+	 <div class="volume">
+	 	<span class="time">2016年4月统计</span>
+	 	<ul>
+	 	    <li><div><span>131311</span><span>成交量</span></div><div></div></li>
+	 	    <li><div><span>131311</span><span>成交量</span></div><div></div></li>
+	 	    <li><div><span>131311</span><span>成交量</span></div><div></div></li>
+	 	    <li><div><span>131311</span><span>成交量</span></div><div></div></li>
+	 	</ul>
+	 </div>
+	 <div class="tab-nav">
+	 	<div class="title">第一组项目</div>
+	 	<div class="content">
+	 	<ul class="tab">
+	 		<li class="show">项目一</li>
+	 		<li>项目二</li>
+	 		<li>项目三</li>
+	 		<li>项目四</li>
+	 		<li>项目五</li>
+	 	</ul>
+	 	<div class="on">
+	 	    <table>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    </table>
+	 	</div>
+	 	<div class="hide">
+	 		 <table>
+	 	    	<tr><td>购买材料2</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料2</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料2</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    </table>
+	 	</div>
+	 	<div class="hide">
+	 		 <table>
+	 	    	<tr><td>购买材料3</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料3</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料3</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    	<tr><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td><td>购买材料1</td></tr>
+	 	    </table>
+	 	</div>
+	 	<div class="hide">444</div>
+	 	<div class="hide">55555</div>
+	 	</div>
+	 </div>
+	 <div class="tab-next">
+	 	<div class="title">第一组项目</div>
+		 <div class="contents">
+		 	<span class="titles">标题</span>
+		 	<span class="font">项目报表三</span>
+		 	<div class="box"><div class="left"><span class="titles">价格</span><span class="font">￥180</span></div><div class="right"><span class="titles">负责人</span><span class="font">小罗</span></div></div>
+		 	<span class="titles">详细描述</span>
+		 	<textarea class="font">该项目的负责人.....</textarea>
+		 	<input type="checkbox" checked="checked"><label class="title">保密协议</label>
+		 	<input class="button" type="submit" value="搜索">
+		 </div>
+	 </div>
+	</div><!--center-content结束-->
+	
+</div><!--right-content结束-->
 </body>
 </html>
